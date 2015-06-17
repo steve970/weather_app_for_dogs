@@ -10,5 +10,5 @@
 
 * JavaScript
 * jQuery
-* Run specs with `rspec`
+* Apache Cordova
 * Made with love and help from: Flickr API, JSON IP, and Open Weather Map API
