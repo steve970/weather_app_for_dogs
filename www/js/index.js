@@ -38,7 +38,7 @@ $(document).ready(function () {
   })
 
   jsonFlickrFeed = function(data) {
-    var x = data.items[11].media["m"].replace(/_m/, "");
+    var x = data.items[18].media["m"].replace(/_m/, "");
     $('body').css('background', 'url("' + x + '") no-repeat center center fixed');
     $('body').css('background-size', 'cover')
   }
