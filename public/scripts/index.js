@@ -12,11 +12,11 @@ $(document).ready(function () {
 
   $.ajax({
     type: "GET",
-    url: "http://ip-api.com/json",
+    url: "https://freegeoip.net/json/",
     dataType: "json",
     success: function(data) {
-      var longitude = data.lon;
-      var latitude = data.lat;
+      var longitude = data.longitude;
+      var latitude = data.latitude;
       $('.longlat').text("Longitude: " + longitude + "     Latitude: " + latitude)
     }
   })
