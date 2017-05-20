@@ -40,7 +40,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       dataType: "jsonp",
-      url: "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" = process.env.OPENWEATHERMAP,
+      url: "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + process.env.OPENWEATHERMAP,
       success: function(data) {
         var weather = data.weather[0].main;
         console.log(weather);
