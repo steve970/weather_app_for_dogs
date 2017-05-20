@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   $.ajax({
     type: "GET",
-    url: "http://ip-api.com/json",
+    url: "https://ip-api.com/json",
     dataType: "json",
     success: function(data) {
       var longitude = data.lon;
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
   $.ajax({
     type: "GET",
-    url: "http://www.flickr.com/services/feeds/photos_public.gne?tags=puggle&format=json",
+    url: "https://www.flickr.com/services/feeds/photos_public.gne?tags=puggle&format=json",
     dataType: "jsonp",
     data: {format: "json"}
   })
@@ -40,7 +40,7 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       dataType: "jsonp",
-      url: "http://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + process.env.OPENWEATHERMAP,
+      url: "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + process.env.OPENWEATHERMAP,
       success: function(data) {
         var weather = data.weather[0].main;
         console.log(weather);
