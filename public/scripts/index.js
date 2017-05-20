@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://ip-api.com/json",
+    url: "http://ip-api.com/json",
     dataType: "json",
     success: function(data) {
       var longitude = data.lon;
