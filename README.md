@@ -3,12 +3,12 @@
 ## Instructions
 
 * Clone
-* cd into www folder
-* start http-server
+* npm install
+* node index.js
 
 ## Languages
 
 * JavaScript
 * jQuery
-* Apache Cordova
-* Made with love and help from: Flickr API, JSON IP, and Open Weather Map API
+* Express
+* Made with love and help from: Flickr API, freegeoip.net, and OpenWeatherMap

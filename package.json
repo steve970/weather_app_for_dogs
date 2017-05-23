@@ -14,8 +14,9 @@
   "keywords": [
     "OpenWeatherAPI",
     "Flickr",
-    "API",
-    "jQuery"
+    "freegeoip",
+    "jQuery",
+    "Express"
   ],
   "author": "Steve Hirschhorn",
   "license": "ISC",

@@ -1,17 +1,12 @@
 $(document).ready(function () {
 
-  $.ajax({
-    type: "GET",
-    url: "https://freegeoip.net/json/",
-    dataType: "json",
-    success: function(data) {
-      var longitude = data.longitude;
-      var latitude = data.latitude;
-      var ipAddress = data.ip;
-      $('.location').text("IP Address: " + ipAddress);
-      $('.longlat').text("Longitude: " + longitude + "     Latitude: " + latitude)
-    }
-  })
+  $.get("https://freegeoip.net/json/", function(data) {
+    var longitude = data.longitude;
+    var latitude = data.latitude;
+    var ipAddress = data.ip;
+    $('.location').text("IP Address: " + ipAddress);
+    $('.longlat').text("Longitude: " + longitude + "     Latitude: " + latitude)
+  }, "json" )
 
   $.ajax({
     type: "GET",
@@ -29,7 +24,7 @@ $(document).ready(function () {
   $('form').on("submit", function (e) {
     var place = $(this).serialize().replace("location=", "").toLowerCase();  // This is better with a big form
     // var place = $("input[type=text]").val().replace(/( )/, "").toLowerCase();
-    $.get("/weather/", place, function(data) {
+    $.get("weather/", place, function(data) {
       var weather = data.weather[0].main;
       if ( weather === "Clouds")
         $('.message').text("Cloudy with a chance of furballs");
