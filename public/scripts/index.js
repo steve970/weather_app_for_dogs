@@ -29,7 +29,7 @@ $(document).ready(function () {
   $('form').on("submit", function (e) {
     var place = $(this).serialize().replace("location=", "").toLowerCase();  // This is better with a big form
     // var place = $("input[type=text]").val().replace(/( )/, "").toLowerCase();
-    $.get("http://localhost:5000/weather/", place, function(data) {
+    $.get("/weather/", place, function(data) {
       var weather = data.weather[0].main;
       if ( weather === "Clouds")
         $('.message').text("Cloudy with a chance of furballs");
