@@ -2,21 +2,13 @@ $(document).ready(function () {
 
   $.ajax({
     type: "GET",
-    url: "https://jsonip.com",
-    dataType: "json",
-    success: function(data) {
-      var ipAddress = data.ip;
-      $('.location').text("IP Address: " + ipAddress);
-    }
-  })
-
-  $.ajax({
-    type: "GET",
     url: "https://freegeoip.net/json/",
     dataType: "json",
     success: function(data) {
       var longitude = data.longitude;
       var latitude = data.latitude;
+      var ipAddress = data.ip;
+      $('.location').text("IP Address: " + ipAddress);
       $('.longlat').text("Longitude: " + longitude + "     Latitude: " + latitude)
     }
   })
@@ -37,28 +29,21 @@ $(document).ready(function () {
   $('form').on("submit", function (e) {
     var place = $(this).serialize().replace("location=", "").toLowerCase();  // This is better with a big form
     // var place = $("input[type=text]").val().replace(/( )/, "").toLowerCase();
-    $.ajax({
-      type: "GET",
-      dataType: "jsonp",
-      url: "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + process.env.OPENWEATHERMAP,
-      success: function(data) {
-        var weather = data.weather[0].main;
-        console.log(weather);
-        if ( weather === "Clouds")
-          $('.message').text("Cloudy with a chance of furballs");
-        else if ( weather === "Rain")
-          $('.message').text("It's raining cats and dogs");
-        else if ( weather === "Clear")
-          $('.message').text("I need a dog pun about the sun...");
-        else
-          $('.message').text("It's ruff out there");
+    $.get("http://localhost:5000/weather/", place, function(data) {
+      var weather = data.weather[0].main;
+      if ( weather === "Clouds")
+        $('.message').text("Cloudy with a chance of furballs");
+      else if ( weather === "Rain")
+        $('.message').text("It's raining cats and dogs");
+      else if ( weather === "Clear")
+        $('.message').text("I need a dog pun about the sun...");
+      else
+        $('.message').text("It's ruff out there");
 
-        $('.weather-report').html(fahrenheit(data.main.temp) + " &#186; F");
-
-      }
+      $('.weather-report').html(fahrenheit(data.main.temp) + " &#186; F");
     })
     e.preventDefault();
-  })
+  });
 
   var fahrenheit = function (data) {
     return (9/5*(Number(data) - 273) + 32).toFixed(0);
